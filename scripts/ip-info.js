@@ -38,10 +38,17 @@ function notify(title, subtitle, message) {
   $notify(title, subtitle || "", message || "");
 }
 
+function finish(title, subtitle, message) {
+  notify(title, subtitle, message);
+  $done({
+    title: title,
+    message: [subtitle, message].filter(Boolean).join("\n\n")
+  });
+}
+
 function fetchWithApi(index) {
   if (index >= API_LIST.length) {
-    notify("❌ 当前出口 IP 查询失败", "所有接口均不可用", "请检查网络或代理策略");
-    $done({});
+    finish("❌ 当前出口 IP 查询失败", "所有接口均不可用", "请检查网络或代理策略");
     return;
   }
 
@@ -58,8 +65,7 @@ function fetchWithApi(index) {
       `接口: ${api.name}`,
       `耗时: ${cost} ms`
     ];
-    notify("🌐 当前出口 IP", info.ip || api.name, lines.join("\n"));
-    $done({});
+    finish("🌐 当前出口 IP", info.ip || api.name, lines.join("\n"));
   }).catch(() => fetchWithApi(index + 1));
 }
 

@@ -5,6 +5,14 @@ function notify(title, subtitle, message) {
   $notify(title, subtitle || "", message || "");
 }
 
+function finish(title, subtitle, message) {
+  notify(title, subtitle, message);
+  $done({
+    title: title,
+    message: [subtitle, message].filter(Boolean).join("\n\n")
+  });
+}
+
 const started = Date.now();
 $task.fetch({
   url: "https://httpbin.org/anything",
@@ -25,9 +33,7 @@ $task.fetch({
     `UA: ${headers["User-Agent"] || headers["user-agent"] || "未知"}`,
     `耗时: ${cost} ms`
   ].join("\n");
-  notify("✅ HTTPBin 请求检测", d.origin || "连通正常", message);
-  $done({});
+  finish("✅ HTTPBin 请求检测", d.origin || "连通正常", message);
 }).catch(err => {
-  notify("❌ HTTPBin 请求检测失败", "无法访问 httpbin.org", String(err));
-  $done({});
+  finish("❌ HTTPBin 请求检测失败", "无法访问 httpbin.org", String(err));
 });

@@ -5,6 +5,14 @@ function notify(title, subtitle, message) {
   $notify(title, subtitle || "", message || "");
 }
 
+function finish(title, subtitle, message) {
+  notify(title, subtitle, message);
+  $done({
+    title: title,
+    message: [subtitle, message].filter(Boolean).join("\n\n")
+  });
+}
+
 function parseTrace(text) {
   const obj = {};
   String(text || "").split("\n").forEach(line => {
@@ -28,9 +36,7 @@ $task.fetch({ url: "https://cloudflare.com/cdn-cgi/trace", method: "GET", timeou
     "",
     "提示: 若 DNS 与代理出口地区长期不一致，可能存在 DNS 泄漏或分流规则异常。"
   ].join("\n");
-  notify("🧭 DNS / 出口检测", t.ip || "Cloudflare Trace", message);
-  $done({});
+  finish("🧭 DNS / 出口检测", t.ip || "Cloudflare Trace", message);
 }).catch(err => {
-  notify("❌ DNS 泄漏检测失败", "cloudflare trace 不可用", String(err));
-  $done({});
+  finish("❌ DNS 泄漏检测失败", "cloudflare trace 不可用", String(err));
 });

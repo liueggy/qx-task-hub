@@ -4,6 +4,14 @@ function notify(title, subtitle, message) {
   $notify(title, subtitle || "", message || "");
 }
 
+function finish(title, subtitle, message) {
+  notify(title, subtitle, message);
+  $done({
+    title: title,
+    message: [subtitle, message].filter(Boolean).join("\n\n")
+  });
+}
+
 const targets = [
   "https://raw.githubusercontent.com/crossutility/Quantumult-X/master/sample.conf",
   "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/README.md",
@@ -28,6 +36,5 @@ Promise.all(targets.map(checkOne)).then(results => {
     return `${r.ok ? "✅" : "❌"} ${name}: ${r.ok ? r.status : "失败"} / ${r.cost} ms`;
   });
   const okCount = results.filter(r => r.ok).length;
-  notify("🐙 GitHub 连通性", `${okCount}/${results.length} 可访问`, lines.join("\n"));
-  $done({});
+  finish("🐙 GitHub 连通性", `${okCount}/${results.length} 可访问`, lines.join("\n"));
 });

@@ -5,6 +5,14 @@ function notify(title, subtitle, message) {
   $notify(title, subtitle || "", message || "");
 }
 
+function finish(title, subtitle, message) {
+  notify(title, subtitle, message);
+  $done({
+    title: title,
+    message: [subtitle, message].filter(Boolean).join("\n\n")
+  });
+}
+
 const targets = [
   { name: "Google 204", url: "https://www.google.com/generate_204" },
   { name: "Cloudflare", url: "https://cloudflare.com/cdn-cgi/trace" },
@@ -31,6 +39,5 @@ Promise.all(targets.map(check)).then(results => {
   const ok = results.filter(r => r.ok);
   const avg = ok.length ? Math.round(ok.reduce((s, r) => s + r.cost, 0) / ok.length) : 0;
   const lines = results.map(r => `${r.ok ? "✅" : "❌"} ${r.name}: ${r.ok ? r.cost + " ms" : "失败"}`);
-  notify("⚡ 节点延迟粗测", ok.length ? `平均 ${avg} ms` : "全部失败", lines.join("\n"));
-  $done({});
+  finish("⚡ 节点延迟粗测", ok.length ? `平均 ${avg} ms` : "全部失败", lines.join("\n"));
 });
