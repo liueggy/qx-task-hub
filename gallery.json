@@ -1,9 +1,13 @@
 {
   "name": "QX Task Hub",
-  "description": "LiuEggy 的 Quantumult X 手动工具任务仓库，图标来自开源 Qure IconSet",
+  "description": "LiuEggy 的 Quantumult X 实用工具任务仓库，包含基础检测、网络诊断、DNS、流媒体与进阶脚本",
   "task": [
     {
       "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/ip-info.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Server.png, tag=当前出口 IP 查询, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/ip-asn-risk.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png, tag=出口 IP 风险检测, enabled=true",
       "addons": ""
     },
     {
@@ -11,7 +15,31 @@
       "addons": ""
     },
     {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/dns-resolver-bench.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google.png, tag=DNS 解析器对比测速, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/dns-domain-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Google.png, tag=域名 DNS 解析检测, enabled=true",
+      "addons": ""
+    },
+    {
       "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/httpbin-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png, tag=HTTPBin 请求检测, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/proxy-gateway-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png, tag=代理网关出口检测, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/site-status-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Global.png, tag=常用站点状态检测, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/media-unlock-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Media.png, tag=流媒体站点可访问性, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/apple-service-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Apple.png, tag=Apple 服务连通性, enabled=true",
       "addons": ""
     },
     {
@@ -20,6 +48,10 @@
     },
     {
       "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/latency-check.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Speedtest.png, tag=节点延迟粗测, enabled=true",
+      "addons": ""
+    },
+    {
+      "config": "event-interaction https://raw.githubusercontent.com/liueggy/qx-task-hub/main/scripts/qx-environment-info.js, img-url=https://cdn.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Final.png, tag=Quantumult X 环境信息, enabled=true",
       "addons": ""
     }
   ]
