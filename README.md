@@ -30,6 +30,7 @@ https://raw.githubusercontent.com/liueggy/qx-task-hub/main/gallery.json
 ## 说明
 
 - 所有脚本均为 QX `event-interaction` 手动触发任务。
+- 图标使用开源 [Qure IconSet](https://github.com/Koolson/Qure)，并通过 jsDelivr CDN 加速。
 - 脚本不会收集 Cookie、Token、订阅地址或账号密码。
 - 输出通过 QX 通知展示。
 
